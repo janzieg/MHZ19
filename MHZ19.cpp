@@ -57,6 +57,19 @@ MHZ19_RESULT MHZ19::setAutoCalibration(bool mode)
 	return receiveResponse(_response);
 }
 
+String MHZ19::getFirmwareVersion()
+{	
+	sendCommand(0xA0, 0x00, 0x00, 0x00, 0x00, 0x00);
+
+	MHZ19_RESULT result = receiveResponse(_response);
+	if (result == MHZ19_RESULT_OK)
+	{
+		return String((char)_response[2]) + String((char)_response[3]) + String((char)_response[4]) + String((char)_response[5]);
+	}
+
+	return "";
+}
+
 MHZ19_RESULT MHZ19::setRange(MHZ19_RANGE range)
 {
 	switch (range) {
