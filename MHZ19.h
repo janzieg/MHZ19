@@ -36,7 +36,7 @@ public:
 	MHZ19_RESULT setRange(MHZ19_RANGE range);
 	void calibrateZero();
 	void calibrateSpan(int span);
-	void setAutoCalibration(bool mode);	
+	MHZ19_RESULT setAutoCalibration(bool mode);	
 	
 	void sendCommand(byte command, byte b3 = 0, byte b4 = 0, byte b5 = 0, byte b6 = 0, byte b7 = 0);
 	MHZ19_RESULT receiveResponse(byte cmd[9]);	

@@ -49,10 +49,12 @@ int MHZ19::getAccuracy()
 	return _result;
 }
 
-void MHZ19::setAutoCalibration(bool mode)
+MHZ19_RESULT MHZ19::setAutoCalibration(bool mode)
 {
 	byte value = mode ? 0xA0 : 0x00;
 	sendCommand(0x79, value, 0x00, 0x00, 0x00, 0x00);
+
+	return receiveResponse(_response);
 }
 
 MHZ19_RESULT MHZ19::setRange(MHZ19_RANGE range)
